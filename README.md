@@ -14,7 +14,7 @@ make -j
 ```
 
 ## for use
-
+please prepare ORBvoc.bin or ORBvoc.txt
 ### save map
 
 ```
