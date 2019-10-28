@@ -434,6 +434,12 @@ void LoopClosing::CorrectLoop()
     mvpCurrentConnectedKFs.push_back(mpCurrentKF);
 
     KeyFrameAndPose CorrectedSim3, NonCorrectedSim3;
+    Eigen::Quaterniond copyq = mg2oScw.rotation();
+    copyq.normalize();
+    Eigen::Vector3d copyt = mg2oScw.translation();
+    double copys = mg2oScw.scale();
+    g2o::Sim3 copy(copyq,copyt,copys);
+    CorrectedSim3[mpCurrentKF]=copy;
     CorrectedSim3[mpCurrentKF]=mg2oScw;
     cv::Mat Twc = mpCurrentKF->GetPoseInverse();
 
