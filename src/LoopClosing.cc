@@ -440,7 +440,6 @@ void LoopClosing::CorrectLoop()
     double copys = mg2oScw.scale();
     g2o::Sim3 copy(copyq,copyt,copys);
     CorrectedSim3[mpCurrentKF]=copy;
-    CorrectedSim3[mpCurrentKF]=mg2oScw;
     cv::Mat Twc = mpCurrentKF->GetPoseInverse();
 
 
