@@ -1,5 +1,5 @@
 <launch>
     <node name="Mono" pkg="ORB_SLAM2" type="Mono" output="screen" 
-        args="$(find ORB_SLAM2)/../../../Vocabulary/ORBvoc.bin $(find ORB_SLAM2)/../../Monocular/orbbec.yaml false" >
+        args="$(find ORB_SLAM2)/../../../Vocabulary/ORBvoc.bin $(find ORB_SLAM2)/../../Monocular/orbbec.yaml false $(find ORB_SLAM2)/../../../map.bin" >
     </node>
 </launch>

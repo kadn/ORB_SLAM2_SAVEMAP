@@ -91,10 +91,10 @@ int main(int argc, char **argv)
     ros::init(argc, argv, "Mono");
     ros::start();
     bool bReuseMap = false;
-    if (argc != 4)
+    if (argc != 5)
     {
         cerr << endl
-             << "Usage: rosrun ORB_SLAM2 Mono path_to_vocabulary path_to_settings bReuseMap(true/false)" << endl;
+             << "Usage: rosrun ORB_SLAM2 Mono path_to_vocabulary path_to_settings bReuseMap(true/false) mapname" << endl;
         ros::shutdown();
         return 1;
     }
@@ -106,13 +106,13 @@ int main(int argc, char **argv)
     else
     {
         cerr << endl
-             << "Usage: rosrun ORB_SLAM2 Mono path_to_vocabulary path_to_settings bReuseMap(true/false)" << endl;
+             << "Usage: rosrun ORB_SLAM2 Mono path_to_vocabulary path_to_settings bReuseMap(true/false) mapname" << endl;
         ros::shutdown();
         return 1;
     }
     
 
-    ORB_SLAM2::System SLAM(argv[1], argv[2], ORB_SLAM2::System::MONOCULAR, true, bReuseMap);
+    ORB_SLAM2::System SLAM(argv[1], argv[2], ORB_SLAM2::System::MONOCULAR, true, bReuseMap, argv[4]);
 
     ImageGrabber igb(&SLAM);
     ros::NodeHandle nodeHandler;
@@ -126,7 +126,7 @@ int main(int argc, char **argv)
     // Save map
     if (!bReuseMap)
     {
-        SLAM.SaveMap("Slam_Map.bin");
+        SLAM.SaveMap(argv[4]);
     }
     // Save camera trajectory
     SLAM.SaveKeyFrameTrajectoryTUM("KeyFrameTrajectory.txt");

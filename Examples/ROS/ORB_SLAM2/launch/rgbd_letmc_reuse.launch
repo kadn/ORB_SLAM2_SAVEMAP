@@ -1,6 +1,6 @@
 <launch>
     <node name="Mono" pkg="ORB_SLAM2" type="RGBD" output="screen" 
-        args="$(find ORB_SLAM2)/../../../Vocabulary/ORBvoc.bin $(find ORB_SLAM2)/../../RGB-D/letmc.yaml true" >
+        args="$(find ORB_SLAM2)/../../../Vocabulary/ORBvoc.bin $(find ORB_SLAM2)/../../RGB-D/letmc.yaml true $(find ORB_SLAM2)/../../../map.bin" >
     </node>
     <param name="/publish_tf" value="true" />
 </launch>

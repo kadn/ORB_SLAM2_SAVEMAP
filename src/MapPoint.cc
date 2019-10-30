@@ -173,7 +173,7 @@ template<class Archive>
         ar & nItems;
         //mObservations.resize(nItems);
         //mObservations_nId.resize(nItems);
-        for (int i = 0; i < nItems; ++i) { 
+        for (size_t i = 0; i < nItems; ++i) { 
 
             ar & is_id;
             if (is_id)
